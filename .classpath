@@ -2,8 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MAUI_LIB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ES_0.90.2"/>
 	<classpathentry kind="lib" path="lib/facebook/facebook4j-core-1.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/twitter4j/twitter4j-async-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/twitter4j/twitter4j-core-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/twitter4j/twitter4j-media-support-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/twitter4j/twitter4j-stream-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/jest-lib/httpclient-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jest-lib/httpcore-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/maui/trove.jar"/>
+	<classpathentry kind="lib" path="lib/maui/wikipediaminer1.1.jar"/>
+	<classpathentry kind="lib" path="lib/maui/weka.jar"/>
+	<classpathentry kind="lib" path="lib/maui/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/maui/jena.jar"/>
+	<classpathentry kind="lib" path="lib/rss/rome-0.9.jar"/>
+	<classpathentry kind="lib" path="lib/rss/jdom-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
