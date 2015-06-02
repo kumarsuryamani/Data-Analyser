@@ -1,0 +1,23 @@
+{
+	"mappings" : {
+	  "post" : {
+	  	"_all" : {
+	  		"enabled" : false
+	  	},
+	  	"_source" : {
+	  		"enabled" : false
+	  	},	  	
+	    "properties" : {
+	      "PostId" : {"type" : "string", "store" : "yes"},
+	      "PostLink" : {"type" : "string", "store" : "yes"},
+	      "PostCreatedTime" : {"type" : "date", "store" : "yes"},
+	      "PostFromId" : {"type" : "string", "store" : "yes"},
+	      "PostFromName" : {"type" : "string", "store" : "yes"},
+	      "PostStatusType" : {"type" : "string", "store" : "yes"},
+	      "Post" : {"type" : "string", "store" : "yes", "index" : "not_analyzed"},
+	      
+	      "RiverName" : {"type" : "string", "store" : "yes"}
+	    }
+	  }
+	}
+}

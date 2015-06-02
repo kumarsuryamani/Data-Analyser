@@ -1,0 +1,97 @@
+curl -XPUT localhost:9200/_river/surya_fb_river/_meta -d '
+{
+    "type" : "facebook",
+    "facebook" : {
+		"oauth" : {
+            "app_id" : "396809450418605",
+            "app_secret" : "80b6d03af2ffaf664ab395a01917f8a8",
+            "access_token" : "CAAFo5WZAV8a0BAIe9wAsE5o6WObDtNqKOJ2gd5WYDZCDSM1yNLl2nCUq1b6XXS65S7ZBIB6kT0y1EPsqQjQ8hyo8fOvSo09ssIRHivNpei3QvHpG7pNOwBXgPcjpqHto8DfGQmcqEL9UOn83EmK5SEB7w4OVooZD"
+     	},
+     	"update_rate" : 600000,
+     	"topics": [
+            {
+                "text": "India"
+            },
+            {
+                "text": "Rahul Dravid"
+            },
+            {
+                "text": "Barack Obama"
+            }
+        ] ,
+        "stanbol_analysers": [
+                        {
+                        "analyser_name":"Finance",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/stw"
+                        },
+                        {
+                        "analyser_name":"Health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/mesh"
+                        },
+                        {
+                        "analyser_name":"health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/default"
+                        }
+                ],
+		"maui_analysers": [
+                        {
+                        "maui_vocabulary_name":"agrovoc_en",
+                        "maui_model_name":"fao30"
+                        },
+                        {
+                        "maui_vocabulary_name":"mesh",
+                        "maui_model_name":"nlm500"
+                        },
+                        {
+                        "maui_vocabulary_name":"hep",
+                        "maui_model_name":"cern290"
+                        },
+                        {
+                        "maui_vocabulary_name":"lcsh",
+                        "maui_model_name":"theses80"
+			}
+                ],
+				"bayesian_analysers": [
+                        {
+                        "analyser_name":"ksm-abayes",
+                        "analyser_url":"http://31.222.176.25:8080/abayes/?query="
+                        }
+    		]
+    	},        
+     	"index" : {
+	        "index" : "surya_fb_river",
+	        "type" : "status"
+        }
+ }'
+ 
+ 
+/* Facebook Post attributes supported by Facebook4j v1.1.11 API */
+ 
+actions
+application
+caption
+comments
+createdTime
+description
+from
+icon
+id
+likes
+link
+message
+messageTags
+name
+objectId
+picture
+place
+privacy
+properties
+sharesCount
+source
+statusType
+story
+storyTags
+to
+type
+updatedTime
+withTages

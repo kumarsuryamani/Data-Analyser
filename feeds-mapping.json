@@ -1,0 +1,20 @@
+{
+	"mappings" : {
+	  "rss" : {
+	  	"_all" : {
+	  		"enabled" : false
+	  	},
+	  	"_source" : {
+	  		"enabled" : false
+	  	},	  	
+	    "properties" : {
+	      "feedname" : {"type" : "string", "store" : "yes"},
+	      "title" : {"type" : "string", "store" : "yes"},
+	      "link" : {"type" : "string", "store" : "yes"},
+	      "uri" : {"type" : "string", "store" : "yes"},
+	      "description" : {"type" : "string", "store" : "yes"},
+	      "publishDate" : {"type" : "date", "store" : "yes"}
+	    }
+	  }
+	}
+}

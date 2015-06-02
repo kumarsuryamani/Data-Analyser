@@ -1,0 +1,16 @@
+{
+	"type": "rss",
+	"rss": {
+		"feeds" : [
+			{
+            	"name": "AMIT",
+                "url": "http://feeds.bbci.co.uk/news/health/rss.xml",
+                "update_rate": 600000
+             }
+          ]
+     },
+     "index" : {
+        "index" : "amit_sample_rss_index",
+        "type" : "amit_sample_rss_type"
+    }
+}

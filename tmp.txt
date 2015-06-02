@@ -1,0 +1,237 @@
+{
+ "fields" : ["title"],
+ "query" : {
+  "match" : { "title" : "AUDIO" }
+ }
+}
+
+
+
+curl -XPUT 'http://localhost:9200/jay_s/page/_mapping' -d '{
+  "page" : {
+    "properties" : {
+      "title" : {"type" : "string"},
+      "description" : {"type" : "string"}
+    }
+  }
+}' 
+
+===================================================================================================
+curl -XPUT 'localhost:9200/_river/jay_s/_meta' -d '{
+  "type": "rss",
+  "rss": {
+    "feeds" : [ {
+        "name": "Jay-S",
+        "url": "http://www.moneycontrol.com/rss/latestnews.xml",
+        "update_rate": 600000
+        }
+    ],
+    "stanbol_url":"http://dev.iks-project.eu:8081/enhancer"	
+  }
+}'
+===============================================================================================
+curl -XPUT 'localhost:9200/_river/surya/_meta' -d '{
+        "type": "rss",
+        "rss": {
+                "feeds" : [
+                        {
+                        "name": "KSM",
+                        "url": "http://www.moneycontrol.com/rss/latestnews.xml",
+                        "update_rate": 600000
+                        }
+                ],
+                "stanbol_analysers": [
+                        {
+                        "analyser_name":"Finance",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/stw"
+                        },
+                        {
+                        "analyser_name":"Health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/mesh"
+                        },
+                        {
+                        "analyser_name":"health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/default"
+                        }
+                ],
+                "maui_analysers": [
+                        {
+                        "maui_vocabulary_name":"agrovoc_en",
+                        "maui_model_name":"fao30"
+                        },
+                        {
+                        "maui_vocabulary_name":"mesh",
+                        "maui_model_name":"nlm500"
+                        },
+                        {
+                        "maui_vocabulary_name":"hep",
+                        "maui_model_name":"cern290"
+                        },
+                        {
+                        "maui_vocabulary_name":"lcsh",
+                        "maui_model_name":"theses80"
+                        }
+                ]
+	}
+}'
+
+
+==========================================================================================================
+curl -XPUT 'localhost:9200/_river/surya/_meta' -d '{
+        "type": "rss",
+        "rss": {
+                "feeds" : [
+                        {
+                        "name": "KSM",
+                        "url": "http://feeds.bbci.co.uk/news/health/rss.xml",
+                        "update_rate": 600000
+                        }
+                ],
+                "stanbol_analysers": [
+                        {
+                        "analyser_name":"Finance",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/stw"
+                        },
+                        {
+                        "analyser_name":"Health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/mesh"
+                        },
+                        {
+                        "analyser_name":"health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/default"
+                        }
+                ],
+		"maui_analysers": [
+                        {
+                        "maui_vocabulary_name":"agrovoc_en",
+                        "maui_model_name":"fao30"
+                        },
+                        {
+                        "maui_vocabulary_name":"mesh",
+                        "maui_model_name":"nlm500"
+                        },
+                        {
+                        "maui_vocabulary_name":"hep",
+                        "maui_model_name":"cern290"
+                        },
+                        {
+                        "maui_vocabulary_name":"lcsh",
+                        "maui_model_name":"theses80"
+			}
+                ],
+"bayesian_analysers": [
+                        {
+                        "analyser_name":"ksm-abayes",
+                        "analyser_url":"http://31.222.176.25:8080/abayes/?query="
+                        }
+    		]
+	}
+}'
+
+================================================================================
+
+curl -XPUT localhost:9200/_river/surya_twitter_river/_meta -d '
+{
+    "type" : "twitter",
+    "twitter" : {
+	"oauth" : {
+            "consumer_key" : "GS15aVhLqzw5KqKGVEsfMQ",
+            "consumer_secret" : "8jeoKxETljxz5eCkK6G4MddLoHdyxeNpoLHR9y6NswM",
+            "access_token" : "182462496-9yNn1mjLo2faXwiyDdd3xLOsZplG3b3lik51QA6g",
+            "access_token_secret" : "lYvJmsqfnT7qL5ajELrzPge34HIC7s2vC2KOddhW7E"
+        },
+        "stanbol_analysers": [
+                        {
+                        "analyser_name":"Finance",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/stw"
+                        },
+                        {
+                        "analyser_name":"Health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/mesh"
+                        },
+                        {
+                        "analyser_name":"health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/default"
+                        }
+                ],
+	"maui_analysers": [
+                        {
+                        "maui_vocabulary_name":"agrovoc_en",
+                        "maui_model_name":"fao30"
+                        },
+                        {
+                        "maui_vocabulary_name":"mesh",
+                        "maui_model_name":"nlm500"
+                        },
+                        {
+                        "maui_vocabulary_name":"hep",
+                        "maui_model_name":"cern290"
+                        },
+                        {
+                        "maui_vocabulary_name":"lcsh",
+                        "maui_model_name":"theses80"
+                        }
+                ],
+	"bayesian_analysers": [
+                        {
+                        "analyser_name":"ksm-abayes",
+                        "analyser_url":"http://31.222.176.25:8080/abayes/?query="
+                        }
+    	]
+    },
+    "index" : {
+        "index" : "surya_twitter_river",
+        "type" : "status",
+        "bulk_size" : 100
+    }
+}'
+
+
+=================================================================================================================================
+
+
+curl -XPUT localhost:9200/_river/surya_twitter_river/_meta -d '
+{
+    "type" : "twitter",
+    "twitter" : {
+	"oauth" : {
+            "consumer_key" : "GS15aVhLqzw5KqKGVEsfMQ",
+            "consumer_secret" : "8jeoKxETljxz5eCkK6G4MddLoHdyxeNpoLHR9y6NswM",
+            "access_token" : "182462496-9yNn1mjLo2faXwiyDdd3xLOsZplG3b3lik51QA6g",
+            "access_token_secret" : "lYvJmsqfnT7qL5ajELrzPge34HIC7s2vC2KOddhW7E"
+        },
+        "stanbol_analysers": [
+                        {
+                        "analyser_name":"Finance",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/stw"
+                        },
+                        {
+                        "analyser_name":"Health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/mesh"
+                        },
+                        {
+                        "analyser_name":"health",
+                        "url":"http://dev.iks-project.eu:8081/enhancer/chain/default"
+                        }
+                ],
+	"maui_analysers": [
+                        {
+                        "maui_vocabulary_name":"agrovoc_en",
+                        "maui_model_name":"fao30"
+                        },
+                        {
+                        "maui_vocabulary_name":"mesh",
+                        "maui_model_name":"theses80"
+                        },
+                        {
+                        "maui_vocabulary_name":"hep",
+                        "maui_model_name":"nlm500"
+                        }
+    	]
+    },
+    "index" : {
+        "index" : "surya_twitter_river",
+        "type" : "status",
+        "bulk_size" : 100
+    }
+}'
